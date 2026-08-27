@@ -3,7 +3,7 @@
 **Geography For Kids** is an educational geography website built to make exploring our world fun, accessible, and easy to understand.
 
 **Website:** https://geographyforkids.site
-**YouTube:** @geographyeducationkids
+**YouTube:** https://youtube.com/@geographyeducationkids
 
 ## About
 
@@ -92,4 +92,4 @@ If you find inaccurate information, broken links, accessibility problems, or oth
 **Learn. Explore. Discover.**
 
 https://geographyforkids.site
-@geographyeducationkids
+https://youtube.com/@geographyeducationkids
