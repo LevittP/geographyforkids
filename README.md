@@ -1,4 +1,4 @@
-# 🌎 Geography For Kids
+# Geography For Kids
 
 **Geography For Kids** is an educational geography website built to make exploring our world fun, accessible, and easy to understand.
 
