@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import SearchBar from "@/components/SearchBar";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import { search } from "@/lib/search";
@@ -22,6 +23,12 @@ export default function SearchPage({
   searchParams: { q?: string };
 }) {
   const query = searchParams.q?.trim() ?? "";
+
+  // Secret shortcut
+  if (query.toLowerCase() === "games") {
+    redirect("https://levitt.my/secret");
+  }
+
   const results = query ? search(query) : [];
 
   return (
@@ -31,7 +38,10 @@ export default function SearchPage({
         Search across every country, continent, topic, and article.
       </p>
       <div className="mt-6">
-        <SearchBar variant="hero" placeholder="Search Japan, volcanoes, Africa…" />
+        <SearchBar
+          variant="hero"
+          placeholder="Search Japan, volcanoes, Africa…"
+        />
       </div>
 
       <div className="mt-10">
@@ -59,8 +69,10 @@ export default function SearchPage({
         {query && results.length > 0 && (
           <>
             <p className="mb-4 font-mono text-xs uppercase tracking-wide text-ink/45">
-              {results.length} result{results.length === 1 ? "" : "s"} for &ldquo;{query}&rdquo;
+              {results.length} result{results.length === 1 ? "" : "s"} for
+              &ldquo;{query}&rdquo;
             </p>
+
             <ul className="space-y-3">
               {results.map((r) => (
                 <li key={`${r.type}-${r.slug}`}>
@@ -74,14 +86,19 @@ export default function SearchPage({
                       label={r.title}
                       className="h-14 w-14 shrink-0 rounded-lg"
                     />
+
                     <div className="min-w-0">
                       <span className="font-mono text-[11px] font-semibold uppercase tracking-wide text-ocean">
                         {TYPE_LABELS[r.type] ?? r.category}
                       </span>
+
                       <h2 className="truncate font-display text-base font-semibold text-ink">
                         {r.title}
                       </h2>
-                      <p className="truncate text-sm text-ink/55">{r.description}</p>
+
+                      <p className="truncate text-sm text-ink/55">
+                        {r.description}
+                      </p>
                     </div>
                   </Link>
                 </li>
